@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VisioLock</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	<script>
+	// link homepage later 
+	function check(){
+		var correctPasscode = 'hi';
+		var triedPasscode = $('#passcode').val();
+		if (correctPasscode == triedPasscode){
+			$.mobile.changePage( "#homePage", { transition: "slideup"} );
+		}
+		else {
+			console.log("wrong");
+		}
+	}
+	</script>
+	<script>
+	$(document).ready(function(){
+		$("#flip").click(function(){
+			$("#panel").slideDown("slow");
+  });
+});
+</script>
+ <style> 
+	#panel,#flip{
+		padding:5px;
+		text-align:center;
+		background-color:#C7C7E8;
+		border:solid 1px #c3c3c3;
+	}
+	#panel{
+		padding:50px;
+		display:none;
+	}</style>
+</head>
+<body >
+	<!-- StartPage -->
+<div data-role="page" id="StartPage"> 
+	<h1 style="font-family:Verdana"><center>VisioLock</center></h1>
+	<img src = "">
+	<p style="font-family:Verdana"><center><b> Face scan will resume shortly....</b><center></p>
+	<div data-role="content">
+        <a id="nextPage" href="#passcodePage">Next Page!</a>
+     </div> 
+	<style>
+		.ui-page{background:transparent;background-color:#67B4FF;}
+	</style>
+</div>
+
+	<!-- Passcode Page --> 
+<div data-role="page" id="passcodePage">
+			<h1 style="font-family:verdana;size:30px"><b><center>VisioLock</center></b></h1>
+			<div class="ui-block-a" style="text-align:center;;margin-top:5%">
+				<input type="text" placeholder="Type in passcode" id="passcode"/>
+			</div>
+			<div class="ui-block-b" style="margin-top:5%">
+				<input type="button" value="Check" id="passcode" onclick="check()"/>
+			</div>
+</div>
+	<!-- Home Page--> 
+<div data-role="page" id="homePage">
+
+	  <div data-role="header">
+			<h1 style=font-family:"Verdana">VisioLock</h1>
+	  </div>
+
+	  <div> 
+		<center>	
+		<a href="#healthCare" data-role="button" data-inline="true" data-icon="info">Health</a>
+		<a href="index.html" data-role="button" data-inline="true" data-icon="info">Car Info</a>
+		<br>
+		<a href="#bank" data-role="button" data-inline="true" data-icon="info">Banks</a>
+		<a href="index.html" data-role="button" data-inline="true" data-icon="info">Pictures</a>
+		<br>
+		<a href="index.html" data-role="button" data-inline="true" data-iconpos="notext" data-icon="plus">Add a new folder</a>
+		</center>
+
+	</div> 
+</div>
+		<!-- Health Care Page -->
+<div data-role="page" id="healthCare">
+
+	  <div data-role="header">
+			<h1> <a href="#homePage" data-role="button" data-icon="arrow-l" data-iconpos="notext"></a> HealthCare
+			</h1>
+	  </div>
+
+	  <div data-role="collapsible">
+		   <h3>Maria</h3>
+			   <p>
+			   Full Name:
+				<input type="text" placeholder="Ex: John Smith" />
+			   Policy Number: ##### <br>
+			   ID: #####
+			   </p>
+
+		</div>
+	 <div data-role="collapsible">
+		<h3>Sophia</h3>
+			<p>
+			Full Name:
+			<input type="text" placeholder="Ex: John Smith" />
+			Policy Number: ##### <br>
+			ID: #####
+			</p>
+	 </div>
+	 <div data-role="collapsible">
+		<h3>Kemley</h3>
+			<p>
+			Full Name:
+			<input type="text" placeholder="Ex: John Smith" />
+			Policy Number: ##### <br>
+			ID:#####
+			</p>
+	 </div>
+</div>
+
+		<!--Bank Account Page --> 
+<div data-role="page" id="bank">
+	<div data-role="header">
+			<h1> <a href="#homePage" data-role="button" data-icon="arrow-l" data-iconpos="notext">Back</a> Bank Accounts
+			</h1>
+	 </div>
+	<div data-role="collapsible">
+		<h3>GirlsWhoCode Bank</h3>
+	<br>
+		<p>Cards:</p>
+		<img id="MasterCard" src="http://www.panaceacache.com/catalog/view/theme/nico/image/mastercard.png" >
+		<img src="http://png-4.findicons.com/files/icons/2250/payment_icon_set/64/visa.png">
+		<img src="http://www.alpacaconsultingusa.com/catalog/view/theme/nicole-shop/image/american_express.png">
+		<img src="http://www.myjumpapalooza.com/wp-content/themes/jumpapalooza/img/discover.png">
+		<style>
+		#MasterCard{
+		border: 5px;
+		border-style: solid;
+		}
+		</style>
+						<!--Card Holders Name-->
+		<h3>Card Holders Name</h3>
+			<p>
+			<input type="text" placeholder="Ex: John Smith" />
+			</p>
+						<!--Account #-->
+		<h3>Account Number</h3>
+			<p>
+			<input type="text" placeholder="Enter Account #" />
+			</p>
+						<!--Card #-->
+		<h3>Card Number</h3>
+			<p>
+			<input type="text" placeholder="Enter Card #" />
+			</p>
+						<!--Pin #-->	
+		<h3>Pin Number</h3>
+			<p>
+			<input type="text" placeholder="Enter Pin #" />
+			</p>
+						<!--3-Digit Code-->	
+		<h3>3-Digit Security Code</h3>
+			<p>
+			<input type="text" placeholder="Enter 3-Digits" />
+			</p>
+						<!--Expiration date-->
+		<h3>Expiration Date</h3>
+			<p>
+			<input type="text" placeholder="Enter expiration date" />
+			</p>
+		<h3> <a href="" data-role="button" data-icon="plus" data-iconpos="notext"></a>Add </h3>
+	</div>
+</div>
+
+</body>
+</html>
