@@ -11,13 +11,58 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
 	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-	<script>
-			
-			
-	</script>
-	 
+	<script type="text/javascript" src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+		<script>
+			var dataRef = new Firebase('https://fiery-fire-3769.firebaseio.com/');
+			dataRef.set("I am now writing data into Firebase!");
+		</script>
+		<script>
+		 function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width()
+                        .height();
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+		</script>
+<meta charset=utf-8 />
+	<title>Picture Page</title>
+	<!--[if IE]>
+	  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<style>
+	  article, aside, figure, footer, header, hgroup, 
+	  menu, nav, section { display: block; }
+	</style> 
 </head>
 <body>
+
+<!-- StartPage -->
+<div data-role="page" id="StartPage"> 
+	<h1 style="font-family:Verdana"><center>VisioLock</center></h1>
+	<center><img src = "C:\Users\GWCStudent\Desktop\VisioLockLogoFinal.jpg"></center>
+	<body>
+	<p style="font-family:Verdana"><center><b> Where your security is as unique as your face! </b><center></p>
+	
+	</body>
+	<div data-role="content">
+		<a id="nextPage" href="C:\Users\GWCStudent\Desktop\new 2.html">Next Page!</a>
+	</div> 
+</div>
+
+<div data-role="page" id="picturePage">
+	<body>
+	<center><input type='file' onchange="readURL(this);" /> </center>
+	</body>
+</div>
+
 <div data-role="page" id="healthCare">
 	  
 	  <div data-role="header">
