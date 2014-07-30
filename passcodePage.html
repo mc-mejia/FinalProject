@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>VisioLock</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script>
+	// link homepage later 
+	function check(){
+		var correctPasscode = 'hi';
+		var triedPasscode = $('#passcode').val();
+		if (correctPasscode == triedPasscode){
+			console.log("correct");
+			// href="homepage
+		}
+		else {
+			console.log("wrong");
+		}
+	}
+	</script>
+</head>
+	<body>
+		<h1 style="font-family:verdana;size:30px"><b><center>VisioLock</center></b></h1>
+		<div class="ui-block-a" style="text-align:center;margin-left:10&;margin-top:5%">
+			<input type="text" placeholder="Type in passcode" id="passcode"/>
+		</div>
+		<div class="ui-block-b" style="margin-top:3%;margin-left:1%;">
+			<input type="button" value="Check" id="passcode" onclick="check()"/>
+		</div>
+		<style>
+		.ui-page{background:transparent; background-color: #67B4FF;}
+		</style>
+	</body>
+</html>
