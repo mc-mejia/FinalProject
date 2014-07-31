@@ -43,7 +43,7 @@
 	<!-- StartPage -->
 <div data-role="page" id="StartPage"> 
 	<h1 style="font-family:Verdana"><center>VisioLock</center></h1>
-	<img src = "">
+	<center><img src = "C:\Users\GWCStudent\Desktop\eyelogo.jpg"></center>
 	<p style="font-family:Verdana"><center><b> Face scan will resume shortly....</b><center></p>
 	<div data-role="content">
         <a id="nextPage" href="#passcodePage">Next Page!</a>
@@ -56,10 +56,10 @@
 	<!-- Passcode Page --> 
 <div data-role="page" id="passcodePage">
 			<h1 style="font-family:verdana;size:30px"><b><center>VisioLock</center></b></h1>
-			<div class="ui-block-a" style="text-align:center;;margin-top:5%">
+			<div class="ui-block-a" style="text-align:center;margin-left:42%">
 				<input type="text" placeholder="Type in passcode" id="passcode"/>
 			</div>
-			<div class="ui-block-b" style="margin-top:5%">
+			<div class="ui-block-b" >
 				<input type="button" value="Check" id="passcode" onclick="check()"/>
 			</div>
 </div>
@@ -73,7 +73,7 @@
 	  <div> 
 		<center>	
 		<a href="#healthCare" data-role="button" data-inline="true" data-icon="info">Health</a>
-		<a href="index.html" data-role="button" data-inline="true" data-icon="info">Car Info</a>
+		<a href="#car" data-role="button" data-inline="true" data-icon="info">Car Info</a>
 		<br>
 		<a href="#bank" data-role="button" data-inline="true" data-icon="info">Banks</a>
 		<a href="index.html" data-role="button" data-inline="true" data-icon="info">Pictures</a>
@@ -96,28 +96,37 @@
 			   <p>
 			   Full Name:
 				<input type="text" placeholder="Ex: John Smith" />
-			   Policy Number: ##### <br>
-			   ID: #####
+			   Policy Number:
+				<input type="text" placeholder="Ex: ####" />
+				<br>
+			   ID: 
+			   <input type="text" placeholder="Ex: ####" />
 			   </p>
 			
 		</div>
 	 <div data-role="collapsible">
 		<h3>Sophia</h3>
 			<p>
-			Full Name:
-			<input type="text" placeholder="Ex: John Smith" />
-			Policy Number: ##### <br>
-			ID: #####
-			</p>
+			   Full Name:
+				<input type="text" placeholder="Ex: John Smith" />
+			   Policy Number:
+				<input type="text" placeholder="Ex: ####" />
+				<br>
+			   ID: 
+			   <input type="text" placeholder="Ex: ####" />
+			   </p>
 	 </div>
 	 <div data-role="collapsible">
-		<h3>Kemley</h3>
 			<p>
-			Full Name:
-			<input type="text" placeholder="Ex: John Smith" />
-			Policy Number: ##### <br>
-			ID:#####
-			</p>
+		<h3>Kemley</h3>
+			   Full Name:
+				<input type="text" placeholder="Ex: John Smith" />
+			   Policy Number:
+				<input type="text" placeholder="Ex: ####" />
+				<br>
+			   ID: 
+			   <input type="text" placeholder="Ex: ####" />
+			   </p>
 	 </div>
 </div>
 
@@ -130,20 +139,78 @@
 	<div data-role="collapsible">
 		<h3>GirlsWhoCode Bank</h3>
 	<br>
-		<p>Cards:</p>
+		<center><p>Cards:</p>
 		<img id="MasterCard" src="http://www.panaceacache.com/catalog/view/theme/nico/image/mastercard.png" >
 		<img src="http://png-4.findicons.com/files/icons/2250/payment_icon_set/64/visa.png">
 		<img src="http://www.alpacaconsultingusa.com/catalog/view/theme/nicole-shop/image/american_express.png">
-		<img src="http://www.myjumpapalooza.com/wp-content/themes/jumpapalooza/img/discover.png">
+		<img src="http://www.myjumpapalooza.com/wp-content/themes/jumpapalooza/img/discover.png"></center>
 		<style>
 		#MasterCard{
 		border: 10px;
 		border-style: solid;
 		}
 		</style>
+			
+		<h3 style="font-family:verdana;size:5px"><center>Account Number</center></h3>
+			<div class="ui-block-a" style="text-align:center;margin-left:42%">
+				<input type="text" placeholder="Type in account number" id="acountNum"/>
+			</div>
+		<br>
+		<h3  style="font-family:verdana;size:5px;">Card Number</h3>
+			<div class="ui-block-a" style="text-align:center;margin-left:42%">
+				<input type="text" placeholder="Type in card number" id="cardNum"/>
+			</div>
+		<br>
+		<h3 style="font-family:verdana;size:5px">3-Digit Security Code</h3>
+			<div class="ui-block-a" style="text-align:center;margin-left:42%">
+				<input type="text" placeholder="3-Digit Security Code" id="threeDigitNum"/>
+			</div>
+		<br>
+		<h3 style="font-family:verdana;size:5px">Pin Number</h3>
+			<div class="ui-block-a" style="text-align:center;margin-left:42%">
+				<input type="text" placeholder="Type in pin number" id="pinNum"/>
+			</div>
+		<br>
+		</b></div>
 	</div>
-</div>
+</div
 
+<!-- Car Page --> 
+<div data-role="page" id="car">
+	<div data-role="header">
+			<h1> <a href="#homePage" data-role="button" data-icon="arrow-l" data-iconpos="notext">Back</a> Car Information
+			</h1>
+	 </div>
+	<div data-role="collapsible">
+		<h3>Range Rover</h3>
+		<br>
+		<h3 style="font-family:verdana;size:5px"><center>Insurance Company</center></h3>
+			<div class="ui-block-a" style="text-align:center;margin-left:42%">
+				<input type="text" placeholder="Insurance company" id="insuranceCom"/>
+			</div>
+		<br>
+		<h3  style="font-family:verdana;size:5px;margin-left:42%;">Insurance Number</h3>
+			<div class="ui-block-a" style="text-align:center;margin-left:42%">
+				<input type="text" placeholder="Insurance Number" id="insuranceNum"/>
+			</div>
+		<br>
+		<h3 style="font-family:verdana;size:5px">Make/Model/Year</h3>
+			<div class="ui-block-a" style="text-align:center;margin-left:42%">
+				<input type="text" placeholder="Make/model/year" id="mmy"/>
+			</div>
+		<br>
+		<h3 style="font-family:verdana;size:5px">License Plate</h3>
+			<div class="ui-block-a" style="text-align:center;margin-left:42%">
+				<input type="text" placeholder="license plate" id="liscensePlate"/>
+			</div>
+		<br>
+		<h3 style="font-family:verdana;size:5px">Insurance Expiration Date</h3>
+			<div class="ui-block-a" style="text-align:center;margin-left:42%">
+				<input type="text" placeholder="Expiration Date" id="expirationDate"/>
+			</div>
+		</div>
+	</div>
+</div
 </body>
 </html>
 	
