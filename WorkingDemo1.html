@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +19,30 @@
 		}
 	}
 	</script>
+	<script> //picture
+	function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width()
+                        .height();
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+	</script>
+	
+	<script src="https://fiery-fire-3769.firebaseio.com/" > 
+	</script>
+	<script>
+	var myFirebaseRef= new Firebase("https://fiery-fire-3769.firebaseio.com/")
+	</script>
+	
+	</script>
 	<script> //firebase save
 		function saveNewCar(){
 			var dataRef = new Firebase('https://fiery-fire-3769.firebaseio.com/');
@@ -28,9 +51,18 @@
 		}
 		
 	</script>
-	<script>
-		function changeAddaNewCar(){
-			var 
+	<script> // checks response from kairos
+	var response = 'images": [{"time": 2.02341,"transaction": {"status": "Complete","face_id": "febdbe472d17eb08f4e5e1c6bcdbc94b", "subject_id": "reshma","gallery_name": "Gallery"}}]}'
+		function checkResponse(){
+			if (response == 'images": [{"time": 2.02341,"transaction": {"status": "Complete","face_id": "febdbe472d17eb08f4e5e1c6bcdbc94b", "subject_id": "reshma","gallery_name": "Gallery"}}]}') {
+				$('#goOn').show() 
+			}
+		}
+	</script>
+	<script> //hide go on link
+	function goonlink(){
+		$('#goOn').hide() 
+	}
 	</script>
 </head>
 <style> 
@@ -43,8 +75,21 @@
 	<center><img src = "C:\Users\GWCStudent\Desktop\VisioLockLogoFinal.jpg"></center>
 	<p style="font-family:Verdana"><center><b> Face scan will resume shortly....</b><center></p>
 	<div data-role="content">
-		<a id="nextPage" href="#passcodePage">Next Page!</a>
+		<a id="nextPage" href="#picturePage" onclick="goonlink();">Next Page!</a>
 	</div> 
+</div>
+	<!--Picture Page--> 
+<div data-role="page" id="picturePage">
+	<body>
+	<h2>
+		Choose: take photo.
+	</h2>
+	<center><input type='file' onchange="readURL(this);" /> </center>
+	<div data-role="button" data-inline="true" data-theme="b" onclick="checkResponse();">Save</div>
+	<div data-role="content" id="goOn">
+		<a id="nextPage" href="#homePage">Go on</a>
+	</div>
+	</body>
 </div>
 	<!-- Passcode Page --> 
 <div data-role="page" id="passcodePage">
@@ -83,54 +128,44 @@
 			<h1> <a href="#homePage" data-role="button" data-icon="arrow-l" data-iconpos="notext"></a> HealthCare
 			</h1>
 	  </div>
-	 
-	  <div data-role="collapsible">
-		   <h3>Maria</h3>
-			   <p>
-			   Full Name:
-				<input type="text" placeholder="Ex: John Smith" />
-			   Policy Number:
-				<input type="text" placeholder="Ex: ####" />
-				<br>
-			   ID: 
-			   <input type="text" placeholder="Ex: ####" />
-			   </p>
-			
-		</div>
-	 <div data-role="collapsible">
-		<h3>Sophia</h3>
-			<p>
-			   Full Name:
-				<input type="text" placeholder="Ex: John Smith" />
-			   Policy Number:
-				<input type="text" placeholder="Ex: ####" />
-				<br>
-			   ID: 
-			   <input type="text" placeholder="Ex: ####" />
-			   </p>
-	 </div>
-	 <div data-role="collapsible">
-			<p>
-		<h3>Kemley</h3>
-			   Full Name:
-				<input type="text" placeholder="Ex: John Smith" />
-			   Policy Number:
-				<input type="text" placeholder="Ex: ####" />
-				<br>
-			   ID: 
-			   <input type="text" placeholder="Ex: ####" />
-			   </p>
+	 <script>
+		function saveNewHealth(){
+		var dataRef= new Firebase("https://fiery-fire-3769.firebaseio.com/")
+		var healthRef= dataRef.child("healthCare");
+		$('#idNumber').keypress(function(e){
+			var typedfullName=$('#fullName').val();
+			var typedpolicyNumber=$('#policyNumber').val();
+			var typedidNumber=$('#idNumber').val();
+			healthRef.push({fullName: typedfullName, policyNumber: typedpolicyNumber, idNumber:typedidNumber});
+			$('#fullName').val('');
+			$('#policyNumber').val('');
+			$('#idNumber').val('');
+		});
+	}
+	
+	healthRef.on('value', function(snapshot){
+		console.log(snapshot.val)
+	}, function(errorObject){
+	
+		}
+	</script>
+	 <div data-role="collapsible" id="new">
+		<h3>
 	 </div>
 	 <div data-role="collapsible">
 		<h3>Add a new person</h3>
 			<p>
 			Full Name:
-			<input type="text" placeholder="Ex: John Smith" />
-			Policy Number:<input type="text" placeholder="Ex: 1234" /> <br>
-			ID:<input type="text" placeholder="Ex:12345" />
-			<a href="#healthCare" data-role="button" data-inline="true" data-theme="b">Save</a>
+			<input type="text" placeholder="Ex: John Smith" id="fullName"/>
+			Policy Number: 
+			<input type="text" placeholder="Ex: 1234" id="policyNumber"/> <br>
+			ID:
+			<input type="text" placeholder="Ex:12345" id="idNumber"/>
+			<button data-role="button" data-inline="true" data-theme="b" id="save" onclick="saveNewHealth()">Press Enter</button>
 			</p>
 	 </div>
+	
+	 
 </div>
 	<!--Bank Account Page --> 
 <div data-role="page" id="bank">
@@ -182,8 +217,52 @@
 			<p>
 			<input type="text" placeholder="Enter expiration date" />
 			</p>
-		<h3> <a href="" data-role="button" data-icon="plus" data-iconpos="notext"></a>Add </h3>
 	</div>
+	<div data-role="collapsible">
+		<h3>Add a bank</h3>
+			<p>Cards:</p>
+		<img id="MasterCard" src="http://www.panaceacache.com/catalog/view/theme/nico/image/mastercard.png" >
+		<img src="http://png-4.findicons.com/files/icons/2250/payment_icon_set/64/visa.png">
+		<img src="http://www.alpacaconsultingusa.com/catalog/view/theme/nicole-shop/image/american_express.png">
+		<img src="http://www.myjumpapalooza.com/wp-content/themes/jumpapalooza/img/discover.png">
+		<style>
+		#MasterCard{
+		border: 5px;
+		border-style: solid;
+		}
+		</style>
+						<!--Card Holders Name-->
+		<h3>Card Holders Name</h3>
+			<p>
+			<input type="text" placeholder="Ex: John Smith" />
+			</p>
+						<!--Account #-->
+		<h3>Account Number</h3>
+			<p>
+			<input type="text" placeholder="Enter Account #" />
+			</p>
+						<!--Card #-->
+		<h3>Card Number</h3>
+			<p>
+			<input type="text" placeholder="Enter Card #" />
+			</p>
+						<!--Pin #-->	
+		<h3>Pin Number</h3>
+			<p>
+			<input type="text" placeholder="Enter Pin #" />
+			</p>
+						<!--3-Digit Code-->	
+		<h3>3-Digit Security Code</h3>
+			<p>
+			<input type="text" placeholder="Enter 3-Digits" />
+			</p>
+						<!--Expiration date-->
+		<h3>Expiration Date</h3>
+			<p>
+			<input type="text" placeholder="Enter expiration date" />
+			</p>
+		<h3> <a href="" data-role="button" data-icon="plus" data-iconpos="notext"></a>Add </h3>
+	 </div>
 </div>
 	<!-- Car Page --> 
 <div data-role="page" id="car">
