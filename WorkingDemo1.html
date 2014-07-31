@@ -7,8 +7,8 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-	<script>
-	// link homepage later 
+	<script type="text/javascript" src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script> 
+	<script> //passcode check
 	function check(){
 		var correctPasscode = 'hi';
 		var triedPasscode = $('#passcode').val();
@@ -20,39 +20,32 @@
 		}
 	}
 	</script>
+	<script> //firebase save
+		function saveNewCar(){
+			var dataRef = new Firebase('https://fiery-fire-3769.firebaseio.com/');
+			var savedCarName = $('#CarName').val()
+			dataRef.push({name: savedCarName, text: "text"});	
+		}
+		
+	</script>
 	<script>
-	$(document).ready(function(){
-		$("#flip").click(function(){
-			$("#panel").slideDown("slow");
-  });
-});
-</script>
- <style> 
-	#panel,#flip{
-		padding:5px;
-		text-align:center;
-		background-color:#C7C7E8;
-		border:solid 1px #c3c3c3;
-	}
-	#panel{
-		padding:50px;
-		display:none;
-	}</style>
+		function changeAddaNewCar(){
+			var 
+	</script>
 </head>
-<body >
+<style> 
+		.ui-page{background:transparent;background-color:#67B4FF;}
+</style>
+<body>
 	<!-- StartPage -->
 <div data-role="page" id="StartPage"> 
 	<h1 style="font-family:Verdana"><center>VisioLock</center></h1>
-	<center><img src = "C:\Users\GWCStudent\Desktop\eyelogo.jpg"></center>
+	<center><img src = "C:\Users\GWCStudent\Desktop\VisioLockLogoFinal.jpg"></center>
 	<p style="font-family:Verdana"><center><b> Face scan will resume shortly....</b><center></p>
 	<div data-role="content">
-        <a id="nextPage" href="#passcodePage">Next Page!</a>
-     </div> 
-	<style>
-		.ui-page{background:transparent;background-color:#67B4FF;}
-	</style>
+		<a id="nextPage" href="#passcodePage">Next Page!</a>
+	</div> 
 </div>
-
 	<!-- Passcode Page --> 
 <div data-role="page" id="passcodePage">
 			<h1 style="font-family:verdana;size:30px"><b><center>VisioLock</center></b></h1>
@@ -83,7 +76,7 @@
 
 	</div> 
 </div>
-		<!-- Health Care Page -->
+	<!-- Health Care Page -->
 <div data-role="page" id="healthCare">
 	  
 	  <div data-role="header">
@@ -128,9 +121,18 @@
 			   <input type="text" placeholder="Ex: ####" />
 			   </p>
 	 </div>
+	 <div data-role="collapsible">
+		<h3>Add a new person</h3>
+			<p>
+			Full Name:
+			<input type="text" placeholder="Ex: John Smith" />
+			Policy Number:<input type="text" placeholder="Ex: 1234" /> <br>
+			ID:<input type="text" placeholder="Ex:12345" />
+			<a href="#healthCare" data-role="button" data-inline="true" data-theme="b">Save</a>
+			</p>
+	 </div>
 </div>
-
-		<!--Bank Account Page --> 
+	<!--Bank Account Page --> 
 <div data-role="page" id="bank">
 	<div data-role="header">
 			<h1> <a href="#homePage" data-role="button" data-icon="arrow-l" data-iconpos="notext">Back</a> Bank Accounts
@@ -139,78 +141,109 @@
 	<div data-role="collapsible">
 		<h3>GirlsWhoCode Bank</h3>
 	<br>
-		<center><p>Cards:</p>
+		<p>Cards:</p>
 		<img id="MasterCard" src="http://www.panaceacache.com/catalog/view/theme/nico/image/mastercard.png" >
 		<img src="http://png-4.findicons.com/files/icons/2250/payment_icon_set/64/visa.png">
 		<img src="http://www.alpacaconsultingusa.com/catalog/view/theme/nicole-shop/image/american_express.png">
-		<img src="http://www.myjumpapalooza.com/wp-content/themes/jumpapalooza/img/discover.png"></center>
+		<img src="http://www.myjumpapalooza.com/wp-content/themes/jumpapalooza/img/discover.png">
 		<style>
 		#MasterCard{
-		border: 10px;
+		border: 5px;
 		border-style: solid;
 		}
 		</style>
-			
-		<h3 style="font-family:verdana;size:5px"><center>Account Number</center></h3>
-			<div class="ui-block-a" style="text-align:center;margin-left:42%">
-				<input type="text" placeholder="Type in account number" id="acountNum"/>
-			</div>
-		<br>
-		<h3  style="font-family:verdana;size:5px;">Card Number</h3>
-			<div class="ui-block-a" style="text-align:center;margin-left:42%">
-				<input type="text" placeholder="Type in card number" id="cardNum"/>
-			</div>
-		<br>
-		<h3 style="font-family:verdana;size:5px">3-Digit Security Code</h3>
-			<div class="ui-block-a" style="text-align:center;margin-left:42%">
-				<input type="text" placeholder="3-Digit Security Code" id="threeDigitNum"/>
-			</div>
-		<br>
-		<h3 style="font-family:verdana;size:5px">Pin Number</h3>
-			<div class="ui-block-a" style="text-align:center;margin-left:42%">
-				<input type="text" placeholder="Type in pin number" id="pinNum"/>
-			</div>
-		<br>
-		</b></div>
+						<!--Card Holders Name-->
+		<h3>Card Holders Name</h3>
+			<p>
+			<input type="text" placeholder="Ex: John Smith" />
+			</p>
+						<!--Account #-->
+		<h3>Account Number</h3>
+			<p>
+			<input type="text" placeholder="Enter Account #" />
+			</p>
+						<!--Card #-->
+		<h3>Card Number</h3>
+			<p>
+			<input type="text" placeholder="Enter Card #" />
+			</p>
+						<!--Pin #-->	
+		<h3>Pin Number</h3>
+			<p>
+			<input type="text" placeholder="Enter Pin #" />
+			</p>
+						<!--3-Digit Code-->	
+		<h3>3-Digit Security Code</h3>
+			<p>
+			<input type="text" placeholder="Enter 3-Digits" />
+			</p>
+						<!--Expiration date-->
+		<h3>Expiration Date</h3>
+			<p>
+			<input type="text" placeholder="Enter expiration date" />
+			</p>
+		<h3> <a href="" data-role="button" data-icon="plus" data-iconpos="notext"></a>Add </h3>
 	</div>
-</div
-
-<!-- Car Page --> 
+</div>
+	<!-- Car Page --> 
 <div data-role="page" id="car">
 	<div data-role="header">
 			<h1> <a href="#homePage" data-role="button" data-icon="arrow-l" data-iconpos="notext">Back</a> Car Information
 			</h1>
 	 </div>
 	<div data-role="collapsible">
-		<h3>Range Rover</h3>
-		<br>
-		<h3 style="font-family:verdana;size:5px"><center>Insurance Company</center></h3>
-			<div class="ui-block-a" style="text-align:center;margin-left:42%">
-				<input type="text" placeholder="Insurance company" id="insuranceCom"/>
-			</div>
-		<br>
-		<h3  style="font-family:verdana;size:5px;margin-left:42%;">Insurance Number</h3>
-			<div class="ui-block-a" style="text-align:center;margin-left:42%">
-				<input type="text" placeholder="Insurance Number" id="insuranceNum"/>
-			</div>
-		<br>
-		<h3 style="font-family:verdana;size:5px">Make/Model/Year</h3>
-			<div class="ui-block-a" style="text-align:center;margin-left:42%">
-				<input type="text" placeholder="Make/model/year" id="mmy"/>
-			</div>
-		<br>
-		<h3 style="font-family:verdana;size:5px">License Plate</h3>
-			<div class="ui-block-a" style="text-align:center;margin-left:42%">
-				<input type="text" placeholder="license plate" id="liscensePlate"/>
-			</div>
-		<br>
-		<h3 style="font-family:verdana;size:5px">Insurance Expiration Date</h3>
-			<div class="ui-block-a" style="text-align:center;margin-left:42%">
-				<input type="text" placeholder="Expiration Date" id="expirationDate"/>
-			</div>
+	<h3> Range Rover</h3>
+		<h3>Insurance Company</h3>
+			<p>
+			<input type="text" placeholder="Ex: Gieco" />
+			</p>
+						<!--Account #-->
+		<h3>Insurance Number</h3>
+			<p>
+			<input type="text" placeholder="Enter insurance #" />
+			</p>
+						<!--Card #-->
+		<h3>Make/Model/Year</h3>
+			<p>
+			<input type="text" placeholder="Ex.Range Rover Sport 2014" />
+			</p>
+						<!--Expiration date-->
+		<h3>Expiration Date</h3>
+			<p>
+			<input type="text" placeholder="Enter expiration date" />
+			</p>
+		<h3> <a href="" data-role="button" data-icon="plus" data-iconpos="notext"></a>Add </h3>
+		</div>
+		
+		<div data-role="collapsible">
+			<h3>Add a Car</h3>
+			<h3>Car Name </h3>
+				<p>
+				<input type="text" placeholder="Ex: Blue Camry" id="CarName" />
+				</p>
+			<h3>Insurance Company</h3>
+				<p>
+				<input type="text" placeholder="Ex: Gieco" id="insuranceCom" />
+				</p>
+							<!--Account #-->
+			<h3>Insurance Number</h3>
+				<p>
+				<input type="text" placeholder="Enter insurance #"id="insuranceNum" />
+				</p>
+							<!--Card #-->
+			<h3>Make/Model/Year</h3>
+				<p>
+				<input type="text" placeholder="Ex.Range Rover Sport 2014"id="mmy" />
+				</p>
+							<!--Expiration date-->
+			<h3>Expiration Date</h3>
+				<p>
+				<input type="text" placeholder="Enter expiration date" id="expirationInsur" />
+				</p>
+			<h3> <a href="" data-role="button" data-icon="plus" data-iconpos="notext" onclick="saveNewCar();"></a>Add </h3>
+		</div>
 		</div>
 	</div>
-</div
 </body>
 </html>
 	
