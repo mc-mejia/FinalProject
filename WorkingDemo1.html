@@ -72,7 +72,7 @@
 	<!-- StartPage -->
 <div data-role="page" id="StartPage"> 
 	<h1 style="font-family:Verdana"><center>VisioLock</center></h1>
-	<center><img src = "C:\Users\GWCStudent\Desktop\VisioLockLogoFinal.jpg"></center>
+	<center><img src = "C:\Users\GWCStudent\Desktop\VisioLockLogoFinal.png"></center>
 	<p style="font-family:Verdana"><center><b> Face scan will resume shortly....</b><center></p>
 	<div data-role="content">
 		<a id="nextPage" href="#picturePage" onclick="goonlink();">Next Page!</a>
@@ -137,21 +137,34 @@
 			var typedpolicyNumber=$('#policyNumber').val();
 			var typedidNumber=$('#idNumber').val();
 			healthRef.push({fullName: typedfullName, policyNumber: typedpolicyNumber, idNumber:typedidNumber});
+			displayHealthList(typedfullName,typedpolicyNumber,typedidNumber);
 			$('#fullName').val('');
 			$('#policyNumber').val('');
 			$('#idNumber').val('');
+			
 		});
-	}
-	
-	healthRef.on('value', function(snapshot){
-		console.log(snapshot.val)
-	}, function(errorObject){
-	
-		}
+	};
+	function displayHealthList(FN,PN,ID) {
+		$('#collapsiblenewHealth.ui-btn-text').text(FN);
+		$('').text(""+ FN).appendTo($('#addName'));
+		$('').text("Policy Number: "+ PN).appendTo($('#policyNum'));
+		$('').text("ID Number: "+ ID).appendTo($('#idNum'));
+	};
+
 	</script>
-	 <div data-role="collapsible" id="new">
-		<h3>
-	 </div>
+	 <div data-role="collapsible" id="collapsiblenewHealth">
+			<h3 id="addName">New Person</h3>
+			<h3>Policy Number</h3>
+				<p>
+				<input type="text" placeholder="Ex: 123" id="policyNum" />
+				</p>
+			<h3>ID Number</h3>
+				<p>
+				<input type="text" placeholder="Ex: 12345" id="idNum" />
+				</p>
+							<!--Account #-->
+	</div>
+	 
 	 <div data-role="collapsible">
 		<h3>Add a new person</h3>
 			<p>
